@@ -1,21 +1,37 @@
 // ==UserScript==
-// @name         Fysik 2 lore :skull:
-// @version      1
+// @name         Custom canvas icons
+// @version      2
 // @description  By Simon
-// @match https://ssis.instructure.com/
+// @match				 https://canvas.kth.se/
 // @grant        none
 // ==/UserScript==
-// Ty Tobias
 
-var fysik2 = "https://media.discordapp.net/attachments/950719755277463576/1177597607577657407/20231124_141217.jpg?ex=6573163c&is=6560a13c&hm=862168bf994c66d764bb002cc6710ae314966559cee0a32a3a97fd49b6c78e93&"
-var gyarb = "https://media.discordapp.net/attachments/943172643710984222/1202968858097356800/gymansiearbetekursen.png?ex=65cf630d&is=65bcee0d&hm=5bea36abaf47741ac33f8540cee29eb33a7b0314b5a8405e8d4baf7feca8d321&"
-var ma5 = "https://media.discordapp.net/attachments/950719755277463576/1216803937709981838/IMG_20240126_204937_012.jpg?ex=6601b7f9&is=65ef42f9&hm=cc56fadeab79b4c4ea552d82cfbab8f30dde921387c6ff6a24c7a5b30c0cc5a6&"
+/*
+ * Modify this code in accordance with your needs, see this as a general guide.
+ * I could in theory have made a more user friendly function that just changes 
+ * the icon automatically but idk if anyone other than me will ever use this so
+ * it has not been prioritized.
+ */
 
+var image1 = "https://raw.githubusercontent.com/SimonCantCode/insanely-low-iq-userscripts/refs/heads/main/media/screaming_on_floor_CROPPED.jpg"
 
+// Initial wait for "load"
 window.addEventListener('load', function() {
+
+// Delay so it doesnt run before site has finished loading.
 setTimeout(function() {
-  document.getElementsByClassName("ic-DashboardCard__header_image")[0].style = 'background-image: url("' + ma5 + '");'
-  document.getElementsByClassName("ic-DashboardCard__header_image")[1].style = 'background-image: url("' + fysik2 + '");'
-  document.getElementsByClassName("ic-DashboardCard__header_image")[2].style = 'background-image: url("' + gyarb + '");'
-}, 1500);
+  
+  // for loop is optional, I wanted it for my setup.
+  // i is which course to replace it for. 0 is the first one (top left).
+  for (let i = 0; i < 4; i++) {
+    
+    // Replace already existing cover image
+  	document.getElementsByClassName("ic-DashboardCard__header_image")[i].style = 'background-image: url("' + image1 + '");'
+  }
+  
+  // If it doesnt already have a cover image
+  document.getElementsByClassName("ic-DashboardCard__header_hero")[1].style = 'background-image: url("' + image1 + '"); background-size: cover;'
+  
+}, 1500); // If you have slower internet and it doesnt load, you can always increase the delay.
 }, false);
+
